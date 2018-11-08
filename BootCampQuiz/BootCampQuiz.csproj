@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D08C86E0-3590-4C64-A9C1-C6844C91FEC3}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BootCampQuiz</RootNamespace>
+    <AssemblyName>BootCampQuiz</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AxInterop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\casar\AxInterop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>..\..\casar\Interop.ShockwaveFlashObjects.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.DirectInput, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\SharpDX.DirectInput.dll</HintPath>
+    </Reference>
+    <Reference Include="Svt.Caspar, Version=1.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\casar\Svt.Caspar.dll</HintPath>
+    </Reference>
+    <Reference Include="Svt.Caspar.Controls, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\casar\Svt.Caspar.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Svt.Network, Version=1.1.0.0, Culture=neutral, processorArchitecture=AMD64">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\casar\Svt.Network.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Videohouse.Timing, Version=1.0.0.605, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Resources\Videohouse.Timing.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Forms\frmAfdruk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmAfdruk.Designer.cs">
+      <DependentUpon>frmAfdruk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmBackgrounds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmBackgrounds.Designer.cs">
+      <DependentUpon>frmBackgrounds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmCasparSetup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmCasparSetup.Designer.cs">
+      <DependentUpon>frmCasparSetup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmFinale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmFinale.Designer.cs">
+      <DependentUpon>frmFinale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRonde1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRonde1.Designer.cs">
+      <DependentUpon>frmRonde1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRonde2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRonde2.Designer.cs">
+      <DependentUpon>frmRonde2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmRonde3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRonde3.Designer.cs">
+      <DependentUpon>frmRonde3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmTeamSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmTeamSelect.Designer.cs">
+      <DependentUpon>frmTeamSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBootCamp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBootCamp.Designer.cs">
+      <DependentUpon>frmBootCamp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Quiz\GameController.cs" />
+    <Compile Include="Quiz\IQuizForm.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Quiz\QuizControl.cs" />
+    <EmbeddedResource Include="Forms\frmAfdruk.resx">
+      <DependentUpon>frmAfdruk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmBackgrounds.resx">
+      <DependentUpon>frmBackgrounds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmCasparSetup.resx">
+      <DependentUpon>frmCasparSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmFinale.resx">
+      <DependentUpon>frmFinale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRonde1.resx">
+      <DependentUpon>frmRonde1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRonde2.resx">
+      <DependentUpon>frmRonde2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRonde3.resx">
+      <DependentUpon>frmRonde3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmTeamSelect.resx">
+      <DependentUpon>frmTeamSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBootCamp.resx">
+      <DependentUpon>frmBootCamp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AxInterop.ShockwaveFlashObjects.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Interop.ShockwaveFlashObjects.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Svt.Caspar.Controls.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Svt.Caspar.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Svt.Network.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Videohouse.Timing.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Videohouse.Timing.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\antwoorden_finale.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SharpDX.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SharpDX.DirectInput.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SharpDX.DirectInput.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SharpDX.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo_boost.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
