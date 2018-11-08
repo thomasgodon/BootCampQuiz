@@ -222,9 +222,6 @@
     <None Include="Resources\Videohouse.Timing.dll" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Videohouse.Timing.pdb" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\antwoorden_finale.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
