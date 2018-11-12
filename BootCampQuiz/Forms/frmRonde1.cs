@@ -95,6 +95,9 @@ namespace BootCampQuiz.Forms
             _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
             _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
             _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
+
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
         }
 
         // _________________________________ EVENT HANDLERS _________________________________
@@ -141,8 +144,6 @@ namespace BootCampQuiz.Forms
 
             // laad punten naar caspar
             this.LoadScore();
-            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
-            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
         }
 
         private void btnJuist_Click(object sender, EventArgs e)
@@ -172,10 +173,6 @@ namespace BootCampQuiz.Forms
                     this.Caspar.Channels[(int)Consumer.A].Load("Goed_C", false);
                     break;
             }
-
-            // update score
-            this.LoadScore();
-            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
 
             // play gfx
             this.Caspar.Channels[(int)Consumer.A].Play();

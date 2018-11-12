@@ -275,12 +275,12 @@
         private System.Windows.Forms.Label lblTeamA;
         private System.Windows.Forms.NumericUpDown nudTeamC;
         private System.Windows.Forms.NumericUpDown nudTeamB;
+        private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnTeamCFout;
         private System.Windows.Forms.Button btnTeamBFout;
         private System.Windows.Forms.Button btnTeamAFout;
         private System.Windows.Forms.Button btnTeamBJuist;
         private System.Windows.Forms.Button btnTeamAJuist;
         private System.Windows.Forms.Button btnTeamCJuist;
-        private System.Windows.Forms.Button btnReset;
     }
 }
