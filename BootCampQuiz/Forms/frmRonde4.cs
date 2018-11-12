@@ -117,11 +117,6 @@ namespace BootCampQuiz.Forms
             this.nudTeamC.DataBindings.Add("Text", this.Control.TeamC, "Punten");
         }
 
-        private void btnTeamStart_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnTeamAGelachen_Click(object sender, EventArgs e)
         {
             try
@@ -154,6 +149,24 @@ namespace BootCampQuiz.Forms
             this.Control.TeamA.Punten += (int)nudSecondenA.Value;
             this.Control.TeamB.Punten += (int)nudSecondenB.Value;
             this.Control.TeamC.Punten += (int)nudSecondenC.Value;
+        }
+
+        private void btnTeamAStart_Click(object sender, EventArgs e)
+        {
+
+            nudSecondenA.Value = 30;
+        }
+
+        private void btnTeamBStart_Click(object sender, EventArgs e)
+        {
+
+            nudSecondenB.Value = 30;
+        }
+
+        private void btnTeamCStart_Click(object sender, EventArgs e)
+        {
+
+            nudSecondenC.Value = 30;
         }
     }
 }

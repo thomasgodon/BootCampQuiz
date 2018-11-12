@@ -110,11 +110,6 @@
             this.nudSecondenC.Size = new System.Drawing.Size(255, 20);
             this.nudSecondenC.TabIndex = 18;
             this.nudSecondenC.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudSecondenC.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
             // 
             // nudSecondenB
             // 
@@ -135,11 +130,6 @@
             this.nudSecondenB.Size = new System.Drawing.Size(254, 20);
             this.nudSecondenB.TabIndex = 17;
             this.nudSecondenB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudSecondenB.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
             // 
             // nudTeamC
             // 
@@ -268,7 +258,7 @@
             this.btnTeamBStart.TabIndex = 1;
             this.btnTeamBStart.Text = "Start";
             this.btnTeamBStart.UseVisualStyleBackColor = true;
-            this.btnTeamBStart.Click += new System.EventHandler(this.btnTeamStart_Click);
+            this.btnTeamBStart.Click += new System.EventHandler(this.btnTeamBStart_Click);
             // 
             // tlpControlA
             // 
@@ -305,7 +295,7 @@
             this.btnTeamAStart.TabIndex = 0;
             this.btnTeamAStart.Text = "Start";
             this.btnTeamAStart.UseVisualStyleBackColor = true;
-            this.btnTeamAStart.Click += new System.EventHandler(this.btnTeamStart_Click);
+            this.btnTeamAStart.Click += new System.EventHandler(this.btnTeamAStart_Click);
             // 
             // tlpControlC
             // 
@@ -332,7 +322,7 @@
             this.btnTeamCStart.TabIndex = 1;
             this.btnTeamCStart.Text = "Start";
             this.btnTeamCStart.UseVisualStyleBackColor = true;
-            this.btnTeamCStart.Click += new System.EventHandler(this.btnTeamStart_Click);
+            this.btnTeamCStart.Click += new System.EventHandler(this.btnTeamCStart_Click);
             // 
             // btnTeamCGelachen
             // 
@@ -364,11 +354,6 @@
             this.nudSecondenA.Size = new System.Drawing.Size(253, 20);
             this.nudSecondenA.TabIndex = 16;
             this.nudSecondenA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.nudSecondenA.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
             // 
             // frmRonde4
             // 
