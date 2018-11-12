@@ -15,12 +15,27 @@ namespace BootCampQuiz.Forms
 {
     public partial class frmRonde3 : Form, IQuizForm
     {
+        // fields
+        private QuizControl _control;
+        private CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
+
         // _________________________________ CLASS PROPERTIES _________________________________
 
         /// <summary>
         /// Referentie van quiz control object dat geinitialiseerd werd in frmBootCamp
         /// </summary>
-        public QuizControl Control { get; set; }
+        public QuizControl Control
+        {
+            get
+            {
+                return _control;
+            }
+            set
+            {
+                _control = value;
+                _control.TeamPushed += new EventHandler(Control_TeamPushed);
+            }
+        }
 
         /// <summary>
         /// Referentoe van caspar device object
@@ -34,65 +49,94 @@ namespace BootCampQuiz.Forms
             this.InitializeComponent();
         }
 
-        private void SetGUITimerTeamA()
+        private void SetGUI()
         {
-            if (this.TimerTeamA.IsRunning)
+            // checken of er gedrukt is of gereset
+            if (this.Control.Afgedrukt)
             {
-                btnStartTimerTeamA.Text = "STOP";
+                switch (this.Control.AfgedruktTeam.Id)
+                {
+                    case 1:
+                        this.lblTeamA.ForeColor = Color.Red;
+                        break;
+
+                    case 2:
+                        this.lblTeamB.ForeColor = Color.Red;
+                        break;
+
+                    case 3:
+                        this.lblTeamC.ForeColor = Color.Red;
+                        break;
+                }
             }
             else
             {
-                btnStartTimerTeamA.Text = "START";
+                // reset kleuren
+                this.lblTeamA.ForeColor = SystemColors.ControlText;
+                this.lblTeamB.ForeColor = SystemColors.ControlText;
+                this.lblTeamC.ForeColor = SystemColors.ControlText;
             }
         }
 
-        private void SetGUITimerTeamB()
+        private void SetReferenceClocks()
         {
-            if (this.TimerTeamB.IsRunning)
-            {
-                btnStartTimerTeamB.Text = "STOP";
-            }
-            else
-            {
-                btnStartTimerTeamB.Text = "START";
-            }
+            if (!rcTeamA.IsRunning) this.rcTeamA.Sync(TimeSpan.FromSeconds(this.Control.TeamA.Punten));
+            if (!rcTeamB.IsRunning) this.rcTeamB.Sync(TimeSpan.FromSeconds(this.Control.TeamB.Punten));
+            if (!rcTeamC.IsRunning) this.rcTeamC.Sync(TimeSpan.FromSeconds(this.Control.TeamC.Punten));
         }
 
-        private void SetGUITimerTeamC()
+        private void LoadScores()
         {
-            if (this.TimerTeamC.IsRunning)
-            {
-                btnStartTimerTeamC.Text = "STOP";
-            }
-            else
-            {
-                btnStartTimerTeamC.Text = "START";
-            }
+            _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
+            _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
+            _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
+
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
         }
 
-        private void SendTimeToCasparCG(TimeSpan Time)
+        private void LoadGenres()
         {
-            CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
-            _dataCollection.SetData("tijd", Time.TotalSeconds.ToString("0"));
-            this.Caspar.Channels[2].CG.Update(10, _dataCollection);
-        }
+            _dataCollection.SetData("genre1", btnGenre1.Text);
+            _dataCollection.SetData("genre2", btnGenre2.Text);
+            _dataCollection.SetData("genre3", btnGenre3.Text);
+            _dataCollection.SetData("gekozen1", Convert.ToInt32(btnGenre1.Checked).ToString());
+            _dataCollection.SetData("gekozen2", Convert.ToInt32(btnGenre2.Checked).ToString());
+            _dataCollection.SetData("gekozen3", Convert.ToInt32(btnGenre3.Checked).ToString());
 
-        private void SendPointsToCasparCG(int Points)
-        {
-            CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
-            _dataCollection.SetData("punten", Points.ToString());
-            this.Caspar.Channels[2].CG.Update(10, _dataCollection);
-        }
-
-        private void ResetCasparCG()
-        {
-            CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
-            _dataCollection.SetData("punten", "0");
-            _dataCollection.SetData("tijd", "120");
-            this.Caspar.Channels[2].CG.Update(10, _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(11, "R3", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(11);
         }
 
         // _________________________________ EVENT HANDLERS _________________________________
+
+        private void Control_TeamPushed(object sender, EventArgs e)
+        {
+            this.SetGUI();
+
+            if (this.Control.Afgedrukt)
+            {
+                switch (this.Control.AfgedruktTeam.Id)
+                {
+                    case 1:
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_A", false);
+                        rcTeamA.Stop();
+                        break;
+
+                    case 2:
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_B", false);
+                        rcTeamB.Stop();
+                        break;
+
+                    case 3:
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_C", false);
+                        rcTeamC.Stop();
+                        break;
+                }
+
+                this.Caspar.Channels[(int)Consumer.A].Play();
+            }
+        }
 
         private void frmRonde3_Load(object sender, EventArgs e)
         {
@@ -106,250 +150,131 @@ namespace BootCampQuiz.Forms
             this.nudTeamB.DataBindings.Add("Text", this.Control.TeamB, "Punten");
             this.nudTeamC.DataBindings.Add("Text", this.Control.TeamC, "Punten");
 
-            // standaard seconden toevoegen
-            this.TimerTeamA.Sync(TimeSpan.FromSeconds(120));
-            this.TimerTeamB.Sync(TimeSpan.FromSeconds(120));
-            this.TimerTeamC.Sync(TimeSpan.FromSeconds(120));
+            // geef punten als seconden door aan reference timing object
+            this.SetReferenceClocks();
 
-            // laad template in casparCG
-            this.Caspar.Channels[2].CG.Add(10, "R3");
-            this.Caspar.Channels[2].CG.Play(10);
+            // laadt scores naar caspar
+            this.LoadScores();
 
-            this.ResetCasparCG();
+            // laadt genres naar caspar
+            this.LoadGenres();
+        }
+
+        private void btnGenre_CheckedChanged(object sender, EventArgs e)
+        {
+            // stuur genre
+        }
+
+        private void rcTeamA_Elapsed(object sender, elapsedEventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Control.TeamA.Punten = (int)e.time.TotalSeconds;
+            });
+        }
+
+        private void rcTeamB_Elapsed(object sender, elapsedEventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Control.TeamB.Punten = (int)e.time.TotalSeconds;
+            });
+        }
+
+        private void rcTeamC_Elapsed(object sender, elapsedEventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                this.Control.TeamC.Punten = (int)e.time.TotalSeconds;
+            });
+        }
+
+        private void btnTeamAStart_Click(object sender, EventArgs e)
+        {
+            rcTeamA.Start();
+            this.Control.Reset();
+        }
+
+        private void btnTeamAHalf_Click(object sender, EventArgs e)
+        {
+            // return wanneer klok loopt
+            if (rcTeamA.IsRunning) return;
+
+            this.Control.Reset();
+            this.Control.TeamA.Punten += 15;
+        }
+
+        private void btnTeamABeide_Click(object sender, EventArgs e)
+        {
+            // return wanneer klok loopt
+            if (rcTeamA.IsRunning) return;
+
+            this.Control.Reset();
+            this.Control.TeamA.Punten += 30;
+        }
+
+        private void btnTeamBStart_Click(object sender, EventArgs e)
+        {
+            rcTeamB.Start();
+            this.Control.Reset();
+        }
+
+        private void btnTeamBHalf_Click(object sender, EventArgs e)
+        {
+            // return wanneer klok loopt
+            if (rcTeamB.IsRunning) return;
+
+            this.Control.Reset();
+            this.Control.TeamB.Punten += 15;
+        }
+
+        private void btnTeamBBeide_Click(object sender, EventArgs e)
+        {
+            // return wanneer klok loopt
+            if (rcTeamB.IsRunning) return;
+
+            this.Control.Reset();
+            this.Control.TeamB.Punten += 30;
+        }
+
+        private void btnTeamCStart_Click(object sender, EventArgs e)
+        {
+            rcTeamC.Start();
+            this.Control.Reset();
+        }
+
+        private void btnTeamCHalf_Click(object sender, EventArgs e)
+        {
+            // return wanneer klok loopt
+            if (rcTeamC.IsRunning) return;
+
+            this.Control.Reset();
+            this.Control.TeamC.Punten += 15;
+        }
+
+        private void btnTeamCBeide_Click(object sender, EventArgs e)
+        {
+            // return wanneer klok loopt
+            if (rcTeamC.IsRunning) return;
+
+            this.Control.Reset();
+            this.Control.TeamB.Punten += 30;
+        }
+
+        private void nudTeam_ValueChanged(object sender, EventArgs e)
+        {
+            this.SetReferenceClocks();
         }
 
         private void frmRonde3_FormClosing(object sender, FormClosingEventArgs e)
         {
-            // stop timers
-            this.TimerTeamA.Stop();
-            this.TimerTeamB.Stop();
-            this.TimerTeamC.Stop();
-        }
+            // stop klokken
+            rcTeamA.Stop();
+            rcTeamB.Stop();
+            rcTeamC.Stop();
 
-        private void btnReset_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TimerTeamA_Elapsed(object sender, elapsedEventArgs e)
-        {
-            // dit event wordt geraised vanuit een andere thread -> we moeten dus invoken naar de main (UI) thread
-            this.Invoke((MethodInvoker)delegate
-            {
-                this.nudTimerTeamA.Value = (int)e.time.TotalSeconds;
-            });
-
-            // stuurt tijd naar caspar
-            if (this.rbTeamA.Checked)
-            {
-                this.SendTimeToCasparCG(e.time);
-            }            
-        }
-
-        private void TimerTeamB_Elapsed(object sender, elapsedEventArgs e)
-        {
-            // dit event wordt geraised vanuit een andere thread -> we moeten dus invoken naar de main (UI) thread
-            this.Invoke((MethodInvoker)delegate
-            {
-                this.nudTimerTeamB.Value = (int)e.time.TotalSeconds;
-            });
-
-            // stuurt tijd naar caspar
-            if (this.rbTeamB.Checked)
-            {
-                this.SendTimeToCasparCG(e.time);
-            }
-        }
-
-        private void TimerTeamC_Elapsed(object sender, elapsedEventArgs e)
-        {
-            // dit event wordt geraised vanuit een andere thread -> we moeten dus invoken naar de main (UI) thread
-            this.Invoke((MethodInvoker)delegate
-            {
-                this.nudTimerTeamC.Value = (int)e.time.TotalSeconds;
-            });
-
-            // stuurt tijd naar caspar
-            if (this.rbTeamC.Checked)
-            {
-                this.SendTimeToCasparCG(e.time);
-            }
-        }
-
-        private void btnStartTimerTeamA_Click(object sender, EventArgs e)
-        {
-            // check of de timer al loopt
-            if (!this.TimerTeamA.IsRunning)
-            {
-                this.TimerTeamA.Start();
-            }
-            else
-            {
-                this.TimerTeamA.Stop();
-            }
-
-            // update GUI
-            this.SetGUITimerTeamA();
-        }
-
-        private void btnStartTimerTeamB_Click(object sender, EventArgs e)
-        {
-            // check of de timer al loopt
-            if (!this.TimerTeamB.IsRunning)
-            {
-                this.TimerTeamB.Start();
-            }
-            else
-            {
-                this.TimerTeamB.Stop();
-            }
-
-            // update GUI
-            this.SetGUITimerTeamB();
-        }
-
-        private void btnStartTimerTeamC_Click(object sender, EventArgs e)
-        {
-            // check of de timer al loopt
-            if (!this.TimerTeamC.IsRunning)
-            {
-                this.TimerTeamC.Start();
-            }
-            else
-            {
-                this.TimerTeamC.Stop();
-            }
-
-            // update GUI
-            this.SetGUITimerTeamC();
-        }
-
-        private void TimerTeamA_Stopped(object sender, EventArgs e)
-        {
-            // dit event wordt vanop een andere thread geraised -> we moeten dus invoken naar de UI thread
-            this.Invoke((MethodInvoker)delegate
-            {
-                // wanneer de timer stopt -> gui updaten
-                this.SetGUITimerTeamA();
-            });
-
-            // tel overblijvende seconden bij de punten
-            this.Control.TeamA.Punten += (int)this.TimerTeamA.ElapsedTime.TotalSeconds;
-        }
-
-        private void TimerTeamB_Stopped(object sender, EventArgs e)
-        {
-            // dit event wordt vanop een andere thread geraised -> we moeten dus invoken naar de UI thread
-            this.Invoke((MethodInvoker)delegate
-            {
-                // wanneer de timer stopt -> gui updaten
-                this.SetGUITimerTeamB();
-            });
-
-            // tel overblijvende seconden bij de punten
-            this.Control.TeamB.Punten += (int)this.TimerTeamB.ElapsedTime.TotalSeconds;
-        }
-
-        private void TimerTeamC_Stopped(object sender, EventArgs e)
-        {
-            // dit event wordt vanop een andere thread geraised -> we moeten dus invoken naar de UI thread
-            this.Invoke((MethodInvoker)delegate
-            {
-                // wanneer de timer stopt -> gui updaten
-                this.SetGUITimerTeamC();
-            });
-
-            // tel overblijvende seconden bij de punten
-            this.Control.TeamB.Punten += (int)this.TimerTeamB.ElapsedTime.TotalSeconds;
-        }
-
-        private void nudTimerTeamA_ValueChanged(object sender, EventArgs e)
-        {
-            // wanneer de timer loopt -> return void
-            if (this.TimerTeamA.IsRunning) return;
-
-            // zet de tijd van de timer gelijk met de ingevoerde waarde
-            this.TimerTeamA.Sync(TimeSpan.FromSeconds((int)this.nudTimerTeamA.Value));
-        }
-
-        private void nudTimerTeamB_ValueChanged(object sender, EventArgs e)
-        {
-            // wanneer de timer loopt -> return void
-            if (this.TimerTeamB.IsRunning) return;
-
-            // zet de tijd van de timer gelijk met de ingevoerde waarde
-            this.TimerTeamB.Sync(TimeSpan.FromSeconds((int)this.nudTimerTeamB.Value));
-        }
-
-        private void nudTimerTeamC_ValueChanged(object sender, EventArgs e)
-        {
-            // wanneer de timer loopt -> return void
-            if (this.TimerTeamC.IsRunning) return;
-
-            // zet de tijd van de timer gelijk met de ingevoerde waarde
-            this.TimerTeamC.Sync(TimeSpan.FromSeconds((int)this.nudTimerTeamC.Value));
-        }
-
-        private void btnJuistTeamA_Click(object sender, EventArgs e)
-        {
-            // check of de huidige waarde gelijk is aan 10
-            if (this.nudTimeTeamA.Value == 10) return;
-
-            this.nudTimeTeamA.Value += 1;
-        }
-
-        private void btnJuistTeamB_Click(object sender, EventArgs e)
-        {
-            // check of de huidige waarde gelijk is aan 10
-            if (this.nudTimeTeamB.Value == 10) return;
-
-            this.nudTimeTeamB.Value += 1;
-        }
-
-        private void btnJuistTeamC_Click(object sender, EventArgs e)
-        {
-            // check of de huidige waarde gelijk is aan 10
-            if (this.nudTimeTeamC.Value == 10) return;
-
-            this.nudTimeTeamC.Value += 1;
-        }
-
-        private void nudTimeTeamA_ValueChanged(object sender, EventArgs e)
-        {
-            // check of waarde = 10 -> stop timer
-            if (this.nudTimeTeamA.Value == 10) this.TimerTeamA.Stop();
-
-            // stuur punten door naar caspar
-            this.SendPointsToCasparCG((int)this.nudTimeTeamA.Value);
-        }
-
-        private void nudTimeTeamB_ValueChanged(object sender, EventArgs e)
-        {
-            // check of waarde = 10 -> stop timer
-            if (this.nudTimeTeamB.Value == 10) this.TimerTeamB.Stop();
-
-            // stuur punten door naar caspar
-            this.SendPointsToCasparCG((int)this.nudTimeTeamB.Value);
-        }
-
-        private void nudTimeTeamC_ValueChanged(object sender, EventArgs e)
-        {
-            // check of waarde = 10 -> stop timer
-            if (this.nudTimeTeamC.Value == 10) this.TimerTeamC.Stop();
-
-            // stuur punten door naar caspar
-            this.SendPointsToCasparCG((int)this.nudTimeTeamC.Value);
-        }
-
-        private void rbTeam_CheckedChanged(object sender, EventArgs e)
-        {
-            // cast sender naar radiobutton
-            RadioButton _radioButton = sender as RadioButton;
-
-            if (_radioButton.Checked)
-            {
-                this.ResetCasparCG();
-            }
-        }
+            // verwijder scores
+            this.Caspar.Channels[(int)Consumer.B].CG.Clear(11);
+        }      
     }
 }
