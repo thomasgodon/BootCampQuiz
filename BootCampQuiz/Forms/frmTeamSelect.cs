@@ -21,12 +21,12 @@ namespace BootCampQuiz.Forms
         /// <summary>
         /// Finale team A
         /// </summary>
-        public QuizControl.Team TeamA { internal set; get; }
+        public Team TeamA { internal set; get; }
 
         /// <summary>
         /// Finale team B
         /// </summary>
-        public QuizControl.Team TeamB { internal set; get; }
+        public Team TeamB { internal set; get; }
 
         // _________________________________ CLASS METHODS _________________________________
 

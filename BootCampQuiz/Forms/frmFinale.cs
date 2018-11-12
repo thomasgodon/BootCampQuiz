@@ -16,8 +16,8 @@ namespace BootCampQuiz.Forms
     public partial class frmFinale : Form, IQuizForm
     {
         // fields
-        private QuizControl.Team _teamA; // finale team 1
-        private QuizControl.Team _teamB; // finale team 2
+        private Team _teamA; // finale team 1
+        private Team _teamB; // finale team 2
         private List<string[]> _antwoorden = new List<string[]>(); // lijst met antwoorden
         private int _huidigeVraag; // zero indexed!
 
