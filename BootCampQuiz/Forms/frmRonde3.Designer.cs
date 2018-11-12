@@ -393,18 +393,24 @@
             this.rcTeamA.CountDirection = Videohouse.Timing.countDirection.Down;
             this.rcTeamA.Period = Videohouse.Timing.timerPeriod.Second;
             this.rcTeamA.Elapsed += new System.EventHandler<Videohouse.Timing.elapsedEventArgs>(this.rcTeamA_Elapsed);
+            this.rcTeamA.Started += new System.EventHandler(this.rcTeamA_StartedStopped);
+            this.rcTeamA.Stopped += new System.EventHandler(this.rcTeamA_StartedStopped);
             // 
             // rcTeamB
             // 
             this.rcTeamB.CountDirection = Videohouse.Timing.countDirection.Down;
             this.rcTeamB.Period = Videohouse.Timing.timerPeriod.Second;
             this.rcTeamB.Elapsed += new System.EventHandler<Videohouse.Timing.elapsedEventArgs>(this.rcTeamB_Elapsed);
+            this.rcTeamB.Started += new System.EventHandler(this.rcTeamB_StartedStopped);
+            this.rcTeamB.Stopped += new System.EventHandler(this.rcTeamB_StartedStopped);
             // 
             // rcTeamC
             // 
             this.rcTeamC.CountDirection = Videohouse.Timing.countDirection.Down;
             this.rcTeamC.Period = Videohouse.Timing.timerPeriod.Second;
             this.rcTeamC.Elapsed += new System.EventHandler<Videohouse.Timing.elapsedEventArgs>(this.rcTeamC_Elapsed);
+            this.rcTeamC.Started += new System.EventHandler(this.rcTeamC_StartedStopped);
+            this.rcTeamC.Stopped += new System.EventHandler(this.rcTeamC_StartedStopped);
             // 
             // frmRonde3
             // 

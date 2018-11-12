@@ -204,8 +204,15 @@ namespace BootCampQuiz.Forms
 
         private void btnTeamAStart_Click(object sender, EventArgs e)
         {
-            rcTeamA.Start();
-            this.Control.Reset();
+            if (!rcTeamA.IsRunning)
+            {
+                rcTeamA.Start();
+                this.Control.Reset();
+            }
+            else
+            {
+                rcTeamA.Stop();
+            }
         }
 
         private void btnTeamAHalf_Click(object sender, EventArgs e)
@@ -228,8 +235,15 @@ namespace BootCampQuiz.Forms
 
         private void btnTeamBStart_Click(object sender, EventArgs e)
         {
-            rcTeamB.Start();
-            this.Control.Reset();
+            if (!rcTeamB.IsRunning)
+            {
+                rcTeamB.Start();
+                this.Control.Reset();
+            }
+            else
+            {
+                rcTeamB.Stop();
+            }
         }
 
         private void btnTeamBHalf_Click(object sender, EventArgs e)
@@ -252,8 +266,15 @@ namespace BootCampQuiz.Forms
 
         private void btnTeamCStart_Click(object sender, EventArgs e)
         {
-            rcTeamC.Start();
-            this.Control.Reset();
+            if (!rcTeamC.IsRunning)
+            {
+                rcTeamC.Start();
+                this.Control.Reset();
+            }
+            else
+            {
+                rcTeamC.Stop();
+            }
         }
 
         private void btnTeamCHalf_Click(object sender, EventArgs e)
@@ -292,6 +313,51 @@ namespace BootCampQuiz.Forms
                 this.Caspar.Channels[(int)Consumer.B].CG.Clear(11);
             }
             catch { }
-        }      
+        }
+
+        private void rcTeamA_StartedStopped(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (rcTeamA.IsRunning)
+                {
+                    btnTeamAStart.Text = "Stop";
+                }
+                else
+                {
+                    btnTeamAStart.Text = "Start";
+                }
+            });            
+        }
+
+        private void rcTeamB_StartedStopped(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (rcTeamB.IsRunning)
+                {
+                    btnTeamBStart.Text = "Stop";
+                }
+                else
+                {
+                    btnTeamBStart.Text = "Start";
+                }
+            });
+        }
+
+        private void rcTeamC_StartedStopped(object sender, EventArgs e)
+        {
+            this.Invoke((MethodInvoker)delegate
+            {
+                if (rcTeamC.IsRunning)
+                {
+                    btnTeamCStart.Text = "Stop";
+                }
+                else
+                {
+                    btnTeamCStart.Text = "Start";
+                }
+            });
+        }
     }
 }

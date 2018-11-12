@@ -179,6 +179,9 @@ namespace BootCampQuiz.Forms
 
             // play gfx
             this.Caspar.Channels[(int)Consumer.A].Play();
+
+            // reset knoppen
+            this.Control.Reset();
         }
 
         private void btnTeamAFout_Click(object sender, EventArgs e)
@@ -207,6 +210,9 @@ namespace BootCampQuiz.Forms
             }
 
             this.Caspar.Channels[(int)Consumer.A].Play();
+
+            // reset knoppen
+            this.Control.Reset();
         }
     }
 }
