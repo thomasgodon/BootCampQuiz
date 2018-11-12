@@ -136,6 +136,12 @@
     <Compile Include="Forms\frmRonde3.Designer.cs">
       <DependentUpon>frmRonde3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\frmRonde4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmRonde4.Designer.cs">
+      <DependentUpon>frmRonde4.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\frmTeamSelect.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmRonde3.resx">
       <DependentUpon>frmRonde3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmRonde4.resx">
+      <DependentUpon>frmRonde4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmTeamSelect.resx">
       <DependentUpon>frmTeamSelect.cs</DependentUpon>
