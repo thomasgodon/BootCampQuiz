@@ -61,7 +61,7 @@ namespace BootCampQuiz.Forms
             _dataCollection.SetData("woord5", _antwoorden[index][4]);
             _dataCollection.SetData("resetLayer", "1");
 
-            this.Caspar.Channels[0].CG.Update(10, _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
         }
 
         private void UpdateTimerGUI()
@@ -118,10 +118,10 @@ namespace BootCampQuiz.Forms
             }
 
             // laad template in casparCG
-            this.Caspar.Channels[1].Clear();
-            this.Caspar.Channels[2].CG.Clear();
-            this.Caspar.Channels[0].CG.Add(10, "FINALE");
-            this.Caspar.Channels[0].CG.Play(10);
+            this.Caspar.Channels[(int)Consumer.A].Clear();
+            this.Caspar.Channels[(int)Consumer.A].CG.Clear();
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "FINALE");
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
 
             // laadt eerste antwoorden
             this.LoadAnswers(_huidigeVraag);
@@ -133,7 +133,7 @@ namespace BootCampQuiz.Forms
             this.TimerTeamA.Stop();
             this.TimerTeamB.Stop();
 
-            this.Caspar.Channels[0].CG.Clear();
+            this.Caspar.Channels[(int)Consumer.B].CG.Clear();
         }
 
         private void btnAntwoord_Click(object sender, EventArgs e)
@@ -180,7 +180,7 @@ namespace BootCampQuiz.Forms
             // stuur geselecteerde antwoord door naar caspar
             CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
             _dataCollection.SetData("woord" + (buttonId + 1).ToString() + "goed", _antwoord);
-            this.Caspar.Channels[0].CG.Update(10, _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
         }
 
         private void btnVolgendeVraag_Click(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace BootCampQuiz.Forms
             // stuur tijd van team A naar caspar
             CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
             _dataCollection.SetData("tijd1", this.nudTimeTeamA.Value.ToString());
-            this.Caspar.Channels[0].CG.Update(10, _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
         }
 
         private void nudTimeTeamB_ValueChanged(object sender, EventArgs e)
@@ -301,7 +301,7 @@ namespace BootCampQuiz.Forms
             // stuur tijd van team B naar caspar
             CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
             _dataCollection.SetData("tijd2", this.nudTimeTeamB.Value.ToString());
-            this.Caspar.Channels[0].CG.Update(10, _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
         }
 
         private void rbTeamA_CheckedChanged(object sender, EventArgs e)
@@ -331,7 +331,7 @@ namespace BootCampQuiz.Forms
             _dataCollection.SetData("woord3", _antwoorden[_huidigeVraag][2]);
             _dataCollection.SetData("woord4", _antwoorden[_huidigeVraag][3]);
             _dataCollection.SetData("woord5", _antwoorden[_huidigeVraag][4]);
-            this.Caspar.Channels[0].CG.Update(10, _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
         }
     }
 }
