@@ -83,6 +83,17 @@ namespace BootCampQuiz.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to GENRE 1
+        ///GENRE 2
+        ///GENRE 3.
+        /// </summary>
+        internal static string genres {
+            get {
+                return ResourceManager.GetString("genres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
         internal static byte[] Interop_ShockwaveFlashObjects {
