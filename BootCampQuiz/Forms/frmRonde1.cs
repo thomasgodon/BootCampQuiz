@@ -90,6 +90,13 @@ namespace BootCampQuiz.Forms
             }
         }
 
+        private void LoadScore()
+        {
+            _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
+            _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
+            _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
+        }
+
         // _________________________________ EVENT HANDLERS _________________________________
 
         private void Control_TeamPushed(object sender, EventArgs e)
@@ -101,19 +108,19 @@ namespace BootCampQuiz.Forms
                 switch(this.Control.AfgedruktTeam.Id)
                 {
                     case 1:
-                        this.Caspar.Channels[1].Load("Blue_A", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_A", false);
                         break;
 
                     case 2:
-                        this.Caspar.Channels[1].Load("Blue_B", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_B", false);
                         break;
 
                     case 3:
-                        this.Caspar.Channels[1].Load("Blue_C", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_C", false);
                         break;
                 }
 
-                this.Caspar.Channels[1].Play();
+                this.Caspar.Channels[(int)Consumer.A].Play();
             }
         }
 
@@ -133,12 +140,9 @@ namespace BootCampQuiz.Forms
             this.SetGUI();
 
             // laad punten naar caspar
-            _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
-            _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
-            _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
-
-            this.Caspar.Channels[2].CG.Add(10, "SCORE", _dataCollection);
-            this.Caspar.Channels[2].CG.Play(10);
+            this.LoadScore();
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
         }
 
         private void btnJuist_Click(object sender, EventArgs e)
@@ -155,21 +159,26 @@ namespace BootCampQuiz.Forms
             {
                 case "A":
                     this.Control.TeamA.Punten += 10;
-                    this.Caspar.Channels[1].Load("Green_A", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_A", false);               
                     break;
 
                 case "B":
                     this.Control.TeamB.Punten += 10;
-                    this.Caspar.Channels[1].Load("Green_B", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_B", false);
                     break;
 
                 case "C":
                     this.Control.TeamC.Punten += 10;
-                    this.Caspar.Channels[1].Load("Green_C", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_C", false);
                     break;
             }
 
-            this.Caspar.Channels[1].Play();
+            // update score
+            this.LoadScore();
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
+
+            // play gfx
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
 
         private void btnFout_Click(object sender, EventArgs e)
@@ -185,19 +194,19 @@ namespace BootCampQuiz.Forms
             switch (_sender.Tag as string)
             {
                 case "A":
-                    this.Caspar.Channels[1].Load("Red_A", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_A", false);
                     break;
 
                 case "B":
-                    this.Caspar.Channels[1].Load("Red_B", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_B", false);
                     break;
 
                 case "C":
-                    this.Caspar.Channels[1].Load("Red_C", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_C", false);
                     break;
             }
 
-            this.Caspar.Channels[1].Play();
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -205,7 +214,7 @@ namespace BootCampQuiz.Forms
             this.Control.Reset();
 
             // caspar cg template laden
-            this.Caspar.Channels[1].Clear();
+            this.Caspar.Channels[(int)Consumer.A].Clear();
         }
     }
 }
