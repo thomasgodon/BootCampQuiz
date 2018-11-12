@@ -116,5 +116,44 @@ namespace BootCampQuiz.Forms
             this.nudTeamB.DataBindings.Add("Text", this.Control.TeamB, "Punten");
             this.nudTeamC.DataBindings.Add("Text", this.Control.TeamC, "Punten");
         }
+
+        private void btnTeamStart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTeamAGelachen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                nudSecondenA.Value -= 10;
+            }
+            catch { }
+        }
+
+        private void btnTeamBGelachen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                nudSecondenB.Value -= 10;
+            }
+            catch { }          
+        }
+
+        private void btnTeamCGelachen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                nudSecondenC.Value -= 10;
+            }
+            catch { }         
+        }
+
+        private void btnUpdateScore_Click(object sender, EventArgs e)
+        {
+            this.Control.TeamA.Punten += (int)nudSecondenA.Value;
+            this.Control.TeamB.Punten += (int)nudSecondenB.Value;
+            this.Control.TeamC.Punten += (int)nudSecondenC.Value;
+        }
     }
 }
