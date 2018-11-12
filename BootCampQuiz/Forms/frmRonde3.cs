@@ -18,6 +18,7 @@ namespace BootCampQuiz.Forms
         // fields
         private QuizControl _control;
         private CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
+        private string[] _genres; // lijst met genres
 
         // _________________________________ CLASS PROPERTIES _________________________________
 
@@ -87,6 +88,8 @@ namespace BootCampQuiz.Forms
 
         private void LoadScores()
         {
+            _dataCollection.Clear();
+
             _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
             _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
             _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
@@ -97,6 +100,8 @@ namespace BootCampQuiz.Forms
 
         private void LoadGenres()
         {
+            _dataCollection.Clear();
+
             _dataCollection.SetData("genre1", btnGenre1.Text);
             _dataCollection.SetData("genre2", btnGenre2.Text);
             _dataCollection.SetData("genre3", btnGenre3.Text);
@@ -158,11 +163,19 @@ namespace BootCampQuiz.Forms
 
             // laadt genres naar caspar
             this.LoadGenres();
+
+            // laadt antwoorden uit file
+            _genres = System.IO.File.ReadAllLines(AppDomain.CurrentDomain.BaseDirectory + @"\\resources\\genres.txt");
+
+            // push genres naar buttons
+            if (_genres.Count() > 0) btnGenre1.Text = _genres[0];
+            if (_genres.Count() > 1) btnGenre2.Text = _genres[1];
+            if (_genres.Count() > 2) btnGenre3.Text = _genres[2];
         }
 
         private void btnGenre_CheckedChanged(object sender, EventArgs e)
         {
-            // stuur genre
+            this.LoadGenres();
         }
 
         private void rcTeamA_Elapsed(object sender, elapsedEventArgs e)
@@ -274,7 +287,11 @@ namespace BootCampQuiz.Forms
             rcTeamC.Stop();
 
             // verwijder scores
-            this.Caspar.Channels[(int)Consumer.B].CG.Clear(11);
+            try
+            {
+                this.Caspar.Channels[(int)Consumer.B].CG.Clear(11);
+            }
+            catch { }
         }      
     }
 }
