@@ -361,6 +361,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tlpRonde1);
+            this.MaximizeBox = false;
             this.Name = "frmRonde4";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.ShowIcon = false;
