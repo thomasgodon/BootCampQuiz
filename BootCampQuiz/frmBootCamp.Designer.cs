@@ -40,6 +40,7 @@
             this.miBackgrounds = new System.Windows.Forms.ToolStripMenuItem();
             this.tsCasparCGStatus = new System.Windows.Forms.ToolStrip();
             this.lblCasparCGStatus = new System.Windows.Forms.ToolStripLabel();
+            this.miRonde4 = new System.Windows.Forms.ToolStripMenuItem();
             this.msMainMenu.SuspendLayout();
             this.tsCasparCGStatus.SuspendLayout();
             this.SuspendLayout();
@@ -51,6 +52,7 @@
             this.miRonde1,
             this.miRonde2,
             this.miRonde3,
+            this.miRonde4,
             this.miFinale,
             this.miAfdrukken,
             this.miBackgrounds});
@@ -144,6 +146,13 @@
             this.lblCasparCGStatus.Size = new System.Drawing.Size(86, 15);
             this.lblCasparCGStatus.Text = "toolStripLabel1";
             // 
+            // miRonde4
+            // 
+            this.miRonde4.Name = "miRonde4";
+            this.miRonde4.Size = new System.Drawing.Size(62, 20);
+            this.miRonde4.Text = "Ronde 4";
+            this.miRonde4.Click += new System.EventHandler(this.miRonde4_Click);
+            // 
             // frmBootCamp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -185,6 +194,7 @@
         private System.Windows.Forms.ToolStripLabel lblCasparCGStatus;
         private System.Windows.Forms.ToolStripMenuItem miAfdrukken;
         private System.Windows.Forms.ToolStripMenuItem miBackgrounds;
+        private System.Windows.Forms.ToolStripMenuItem miRonde4;
     }
 }
 

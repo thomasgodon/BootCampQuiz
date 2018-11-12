@@ -28,6 +28,7 @@ namespace BootCampQuiz
         private frmRonde1 _ronde1 = null;
         private frmRonde2 _ronde2 = null;
         private frmRonde3 _ronde3 = null;
+        private frmRonde4 _ronde4 = null;
         private frmFinale _finale = null;
         private frmAfdruk _afdruk = null;
         private frmBackgrounds _backgrounds = null;
@@ -148,7 +149,7 @@ namespace BootCampQuiz
             {
                 CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
                 _dataCollection.SetData("score1", _control.TeamA.Punten.ToString());
-                _caspar.Channels[2].CG.Update(10, _dataCollection);
+                _caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
             }
         }
 
@@ -158,7 +159,7 @@ namespace BootCampQuiz
             {
                 CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
                 _dataCollection.SetData("score2", _control.TeamB.Punten.ToString());
-                _caspar.Channels[2].CG.Update(10, _dataCollection);
+                _caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
             }
         }
 
@@ -168,7 +169,7 @@ namespace BootCampQuiz
             {
                 CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
                 _dataCollection.SetData("score3", _control.TeamC.Punten.ToString());
-                _caspar.Channels[2].CG.Update(10, _dataCollection);
+                _caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
             }
         }
 
@@ -185,6 +186,11 @@ namespace BootCampQuiz
         private void miRonde3_Click(object sender, EventArgs e)
         {
             this.ShowForm<frmRonde3>(ref _ronde3);
+        }
+
+        private void miRonde4_Click(object sender, EventArgs e)
+        {
+            this.ShowForm<frmRonde4>(ref _ronde4);
         }
 
         private void miFinale_Click(object sender, EventArgs e)
