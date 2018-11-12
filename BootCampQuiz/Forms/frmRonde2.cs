@@ -85,6 +85,13 @@ namespace BootCampQuiz.Forms
             }
         }
 
+        private void LoadScore()
+        {
+            _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
+            _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
+            _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
+        }
+
         // _________________________________ EVENT HANDLERS _________________________________
 
         private void Control_TeamPushed(object sender, EventArgs e)
@@ -96,19 +103,19 @@ namespace BootCampQuiz.Forms
                 switch (this.Control.AfgedruktTeam.Id)
                 {
                     case 1:
-                        this.Caspar.Channels[1].Load("Blue_A", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_A", false);
                         break;
 
                     case 2:
-                        this.Caspar.Channels[1].Load("Blue_B", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_B", false);
                         break;
 
                     case 3:
-                        this.Caspar.Channels[1].Load("Blue_C", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_C", false);
                         break;
                 }
 
-                this.Caspar.Channels[1].Play();
+                this.Caspar.Channels[(int)Consumer.A].Play();
             }
         }
 
@@ -128,48 +135,10 @@ namespace BootCampQuiz.Forms
             this.SetGUI();
 
             // laad punten naar caspar
-            _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
-            _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
-            _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
+            this.LoadScore();
 
-            this.Caspar.Channels[2].CG.Add(10, "SCORE", _dataCollection);
-            this.Caspar.Channels[2].CG.Play(10);
-        }
-
-        private void btnTeamA_Click(object sender, EventArgs e)
-        {
-            // cast button
-            Button _button = sender as Button;
-
-            // voeg punten uit tag toe
-            this.Control.TeamA.Punten += Convert.ToInt32(_button.Tag);
-
-            // caspar cg template clear
-            this.Caspar.Channels[1].Clear();
-        }
-
-        private void btnTeamB_Click(object sender, EventArgs e)
-        {
-            // cast button
-            Button _button = sender as Button;
-
-            // voeg punten uit tag toe
-            this.Control.TeamB.Punten += Convert.ToInt32(_button.Tag);
-
-            // caspar cg template clear
-            this.Caspar.Channels[1].Clear();
-        }
-
-        private void btnTeamC_Click(object sender, EventArgs e)
-        {
-            // cast button
-            Button _button = sender as Button;
-
-            // voeg punten uit tag toe
-            this.Control.TeamC.Punten += Convert.ToInt32(_button.Tag);
-
-            // caspar cg template clear
-            this.Caspar.Channels[1].Clear();
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
         }
 
         private void btnReset_Click(object sender, EventArgs e)
@@ -178,6 +147,70 @@ namespace BootCampQuiz.Forms
 
             // caspar cg template laden
             this.Caspar.Channels[1].Clear();
+        }
+
+        private void btnTeamAGoed_Click(object sender, EventArgs e)
+        {
+            // cast sender object naar button -> deze method wordt enkel door buttons gecalled
+            Button _sender = sender as Button;
+
+            // speel systeem geluidje :)
+            System.Media.SystemSounds.Exclamation.Play();
+
+            // toevoegen punten
+            // check tag -> letter zit in de tag
+            switch (_sender.Tag as string)
+            {
+                case "A":
+                    this.Control.TeamA.Punten += 10;
+                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_A", false);
+                    break;
+
+                case "B":
+                    this.Control.TeamB.Punten += 10;
+                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_B", false);
+                    break;
+
+                case "C":
+                    this.Control.TeamC.Punten += 10;
+                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_C", false);
+                    break;
+            }
+
+            // update score
+            this.LoadScore();
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
+
+            // play gfx
+            this.Caspar.Channels[(int)Consumer.A].Play();
+        }
+
+        private void btnTeamAFout_Click(object sender, EventArgs e)
+        {
+            // cast sender object naar button -> deze method wordt enkel door buttons gecalled
+            Button _sender = sender as Button;
+
+            // speel systeem geluidje :)
+            System.Media.SystemSounds.Hand.Play();
+
+            // toevoegen punten
+            // check tag -> letter zit in de tag
+            switch (_sender.Tag as string)
+            {
+                case "A":
+                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_A", false);
+                    break;
+
+                case "B":
+                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_B", false);
+                    break;
+
+                case "C":
+                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_C", false);
+                    break;
+            }
+
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
     }
 }

@@ -37,20 +37,14 @@
             this.lblTeamA = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.tlpButtonsTeamA = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTeamA30 = new System.Windows.Forms.Button();
-            this.btnTeamA20 = new System.Windows.Forms.Button();
-            this.btnTeamA10 = new System.Windows.Forms.Button();
-            this.btnTeamA0 = new System.Windows.Forms.Button();
+            this.btnTeamAGoed = new System.Windows.Forms.Button();
+            this.btnTeamAFout = new System.Windows.Forms.Button();
             this.tlpButtonsTeamC = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTeamC30 = new System.Windows.Forms.Button();
-            this.btnTeamC20 = new System.Windows.Forms.Button();
-            this.btnTeamC10 = new System.Windows.Forms.Button();
-            this.btnTeamC0 = new System.Windows.Forms.Button();
+            this.btnTeamCGoed = new System.Windows.Forms.Button();
+            this.btnTeamCFout = new System.Windows.Forms.Button();
             this.tlpButtonsTeamB = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTeamB30 = new System.Windows.Forms.Button();
-            this.btnTeamB20 = new System.Windows.Forms.Button();
-            this.btnTeamB0 = new System.Windows.Forms.Button();
-            this.btnTeamB10 = new System.Windows.Forms.Button();
+            this.btnTeamBGoed = new System.Windows.Forms.Button();
+            this.btnTeamBFout = new System.Windows.Forms.Button();
             this.tlpRonde1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudTeamC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTeamB)).BeginInit();
@@ -184,202 +178,124 @@
             // 
             this.tlpButtonsTeamA.ColumnCount = 1;
             this.tlpButtonsTeamA.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtonsTeamA.Controls.Add(this.btnTeamA30, 0, 0);
-            this.tlpButtonsTeamA.Controls.Add(this.btnTeamA20, 0, 1);
-            this.tlpButtonsTeamA.Controls.Add(this.btnTeamA10, 0, 2);
-            this.tlpButtonsTeamA.Controls.Add(this.btnTeamA0, 0, 3);
+            this.tlpButtonsTeamA.Controls.Add(this.btnTeamAGoed, 0, 0);
+            this.tlpButtonsTeamA.Controls.Add(this.btnTeamAFout, 0, 1);
             this.tlpButtonsTeamA.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpButtonsTeamA.Location = new System.Drawing.Point(3, 143);
             this.tlpButtonsTeamA.Name = "tlpButtonsTeamA";
-            this.tlpButtonsTeamA.RowCount = 4;
-            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonsTeamA.RowCount = 2;
+            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpButtonsTeamA.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpButtonsTeamA.Size = new System.Drawing.Size(251, 170);
             this.tlpButtonsTeamA.TabIndex = 26;
             // 
-            // btnTeamA30
+            // btnTeamAGoed
             // 
-            this.btnTeamA30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamA30.Location = new System.Drawing.Point(3, 3);
-            this.btnTeamA30.Name = "btnTeamA30";
-            this.btnTeamA30.Size = new System.Drawing.Size(245, 36);
-            this.btnTeamA30.TabIndex = 13;
-            this.btnTeamA30.Tag = "30";
-            this.btnTeamA30.Text = "30";
-            this.btnTeamA30.UseVisualStyleBackColor = true;
-            this.btnTeamA30.Click += new System.EventHandler(this.btnTeamA_Click);
+            this.btnTeamAGoed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTeamAGoed.Location = new System.Drawing.Point(3, 3);
+            this.btnTeamAGoed.Name = "btnTeamAGoed";
+            this.btnTeamAGoed.Size = new System.Drawing.Size(245, 79);
+            this.btnTeamAGoed.TabIndex = 13;
+            this.btnTeamAGoed.Tag = "A";
+            this.btnTeamAGoed.Text = "Goed";
+            this.btnTeamAGoed.UseVisualStyleBackColor = true;
+            this.btnTeamAGoed.Click += new System.EventHandler(this.btnTeamAGoed_Click);
             // 
-            // btnTeamA20
+            // btnTeamAFout
             // 
-            this.btnTeamA20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamA20.Location = new System.Drawing.Point(3, 45);
-            this.btnTeamA20.Name = "btnTeamA20";
-            this.btnTeamA20.Size = new System.Drawing.Size(245, 36);
-            this.btnTeamA20.TabIndex = 16;
-            this.btnTeamA20.Tag = "20";
-            this.btnTeamA20.Text = "20";
-            this.btnTeamA20.UseVisualStyleBackColor = true;
-            this.btnTeamA20.Click += new System.EventHandler(this.btnTeamA_Click);
-            // 
-            // btnTeamA10
-            // 
-            this.btnTeamA10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamA10.Location = new System.Drawing.Point(3, 87);
-            this.btnTeamA10.Name = "btnTeamA10";
-            this.btnTeamA10.Size = new System.Drawing.Size(245, 36);
-            this.btnTeamA10.TabIndex = 19;
-            this.btnTeamA10.Tag = "10";
-            this.btnTeamA10.Text = "10";
-            this.btnTeamA10.UseVisualStyleBackColor = true;
-            this.btnTeamA10.Click += new System.EventHandler(this.btnTeamA_Click);
-            // 
-            // btnTeamA0
-            // 
-            this.btnTeamA0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamA0.Location = new System.Drawing.Point(3, 129);
-            this.btnTeamA0.Name = "btnTeamA0";
-            this.btnTeamA0.Size = new System.Drawing.Size(245, 38);
-            this.btnTeamA0.TabIndex = 22;
-            this.btnTeamA0.Tag = "0";
-            this.btnTeamA0.Text = "0";
-            this.btnTeamA0.UseVisualStyleBackColor = true;
-            this.btnTeamA0.Click += new System.EventHandler(this.btnTeamA_Click);
+            this.btnTeamAFout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTeamAFout.Location = new System.Drawing.Point(3, 88);
+            this.btnTeamAFout.Name = "btnTeamAFout";
+            this.btnTeamAFout.Size = new System.Drawing.Size(245, 79);
+            this.btnTeamAFout.TabIndex = 16;
+            this.btnTeamAFout.Tag = "A";
+            this.btnTeamAFout.Text = "Fout";
+            this.btnTeamAFout.UseVisualStyleBackColor = true;
+            this.btnTeamAFout.Click += new System.EventHandler(this.btnTeamAFout_Click);
             // 
             // tlpButtonsTeamC
             // 
             this.tlpButtonsTeamC.ColumnCount = 1;
             this.tlpButtonsTeamC.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtonsTeamC.Controls.Add(this.btnTeamC30, 0, 0);
-            this.tlpButtonsTeamC.Controls.Add(this.btnTeamC20, 0, 1);
-            this.tlpButtonsTeamC.Controls.Add(this.btnTeamC10, 0, 2);
-            this.tlpButtonsTeamC.Controls.Add(this.btnTeamC0, 0, 3);
+            this.tlpButtonsTeamC.Controls.Add(this.btnTeamCGoed, 0, 0);
+            this.tlpButtonsTeamC.Controls.Add(this.btnTeamCFout, 0, 1);
             this.tlpButtonsTeamC.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpButtonsTeamC.Location = new System.Drawing.Point(517, 143);
             this.tlpButtonsTeamC.Name = "tlpButtonsTeamC";
-            this.tlpButtonsTeamC.RowCount = 4;
-            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonsTeamC.RowCount = 2;
+            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpButtonsTeamC.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpButtonsTeamC.Size = new System.Drawing.Size(252, 170);
             this.tlpButtonsTeamC.TabIndex = 27;
             // 
-            // btnTeamC30
+            // btnTeamCGoed
             // 
-            this.btnTeamC30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamC30.Location = new System.Drawing.Point(3, 3);
-            this.btnTeamC30.Name = "btnTeamC30";
-            this.btnTeamC30.Size = new System.Drawing.Size(246, 36);
-            this.btnTeamC30.TabIndex = 15;
-            this.btnTeamC30.Tag = "30";
-            this.btnTeamC30.Text = "30";
-            this.btnTeamC30.UseVisualStyleBackColor = true;
-            this.btnTeamC30.Click += new System.EventHandler(this.btnTeamC_Click);
+            this.btnTeamCGoed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTeamCGoed.Location = new System.Drawing.Point(3, 3);
+            this.btnTeamCGoed.Name = "btnTeamCGoed";
+            this.btnTeamCGoed.Size = new System.Drawing.Size(246, 79);
+            this.btnTeamCGoed.TabIndex = 15;
+            this.btnTeamCGoed.Tag = "C";
+            this.btnTeamCGoed.Text = "Goed";
+            this.btnTeamCGoed.UseVisualStyleBackColor = true;
+            this.btnTeamCGoed.Click += new System.EventHandler(this.btnTeamAGoed_Click);
             // 
-            // btnTeamC20
+            // btnTeamCFout
             // 
-            this.btnTeamC20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamC20.Location = new System.Drawing.Point(3, 45);
-            this.btnTeamC20.Name = "btnTeamC20";
-            this.btnTeamC20.Size = new System.Drawing.Size(246, 36);
-            this.btnTeamC20.TabIndex = 18;
-            this.btnTeamC20.Tag = "20";
-            this.btnTeamC20.Text = "20";
-            this.btnTeamC20.UseVisualStyleBackColor = true;
-            this.btnTeamC20.Click += new System.EventHandler(this.btnTeamC_Click);
-            // 
-            // btnTeamC10
-            // 
-            this.btnTeamC10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamC10.Location = new System.Drawing.Point(3, 87);
-            this.btnTeamC10.Name = "btnTeamC10";
-            this.btnTeamC10.Size = new System.Drawing.Size(246, 36);
-            this.btnTeamC10.TabIndex = 21;
-            this.btnTeamC10.Tag = "10";
-            this.btnTeamC10.Text = "10";
-            this.btnTeamC10.UseVisualStyleBackColor = true;
-            this.btnTeamC10.Click += new System.EventHandler(this.btnTeamC_Click);
-            // 
-            // btnTeamC0
-            // 
-            this.btnTeamC0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamC0.Location = new System.Drawing.Point(3, 129);
-            this.btnTeamC0.Name = "btnTeamC0";
-            this.btnTeamC0.Size = new System.Drawing.Size(246, 38);
-            this.btnTeamC0.TabIndex = 24;
-            this.btnTeamC0.Tag = "0";
-            this.btnTeamC0.Text = "0";
-            this.btnTeamC0.UseVisualStyleBackColor = true;
-            this.btnTeamC0.Click += new System.EventHandler(this.btnTeamC_Click);
+            this.btnTeamCFout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTeamCFout.Location = new System.Drawing.Point(3, 88);
+            this.btnTeamCFout.Name = "btnTeamCFout";
+            this.btnTeamCFout.Size = new System.Drawing.Size(246, 79);
+            this.btnTeamCFout.TabIndex = 18;
+            this.btnTeamCFout.Tag = "C";
+            this.btnTeamCFout.Text = "Fout";
+            this.btnTeamCFout.UseVisualStyleBackColor = true;
+            this.btnTeamCFout.Click += new System.EventHandler(this.btnTeamAFout_Click);
             // 
             // tlpButtonsTeamB
             // 
             this.tlpButtonsTeamB.ColumnCount = 1;
             this.tlpButtonsTeamB.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpButtonsTeamB.Controls.Add(this.btnTeamB30, 0, 0);
-            this.tlpButtonsTeamB.Controls.Add(this.btnTeamB20, 0, 1);
-            this.tlpButtonsTeamB.Controls.Add(this.btnTeamB0, 0, 3);
-            this.tlpButtonsTeamB.Controls.Add(this.btnTeamB10, 0, 2);
+            this.tlpButtonsTeamB.Controls.Add(this.btnTeamBGoed, 0, 0);
+            this.tlpButtonsTeamB.Controls.Add(this.btnTeamBFout, 0, 1);
             this.tlpButtonsTeamB.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tlpButtonsTeamB.Location = new System.Drawing.Point(260, 143);
             this.tlpButtonsTeamB.Name = "tlpButtonsTeamB";
-            this.tlpButtonsTeamB.RowCount = 4;
-            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tlpButtonsTeamB.RowCount = 2;
+            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tlpButtonsTeamB.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpButtonsTeamB.Size = new System.Drawing.Size(251, 170);
             this.tlpButtonsTeamB.TabIndex = 25;
             // 
-            // btnTeamB30
+            // btnTeamBGoed
             // 
-            this.btnTeamB30.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamB30.Location = new System.Drawing.Point(3, 3);
-            this.btnTeamB30.Name = "btnTeamB30";
-            this.btnTeamB30.Size = new System.Drawing.Size(245, 36);
-            this.btnTeamB30.TabIndex = 14;
-            this.btnTeamB30.Tag = "30";
-            this.btnTeamB30.Text = "30";
-            this.btnTeamB30.UseVisualStyleBackColor = true;
-            this.btnTeamB30.Click += new System.EventHandler(this.btnTeamB_Click);
+            this.btnTeamBGoed.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTeamBGoed.Location = new System.Drawing.Point(3, 3);
+            this.btnTeamBGoed.Name = "btnTeamBGoed";
+            this.btnTeamBGoed.Size = new System.Drawing.Size(245, 79);
+            this.btnTeamBGoed.TabIndex = 14;
+            this.btnTeamBGoed.Tag = "B";
+            this.btnTeamBGoed.Text = "Goed";
+            this.btnTeamBGoed.UseVisualStyleBackColor = true;
+            this.btnTeamBGoed.Click += new System.EventHandler(this.btnTeamAGoed_Click);
             // 
-            // btnTeamB20
+            // btnTeamBFout
             // 
-            this.btnTeamB20.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamB20.Location = new System.Drawing.Point(3, 45);
-            this.btnTeamB20.Name = "btnTeamB20";
-            this.btnTeamB20.Size = new System.Drawing.Size(245, 36);
-            this.btnTeamB20.TabIndex = 17;
-            this.btnTeamB20.Tag = "20";
-            this.btnTeamB20.Text = "20";
-            this.btnTeamB20.UseVisualStyleBackColor = true;
-            this.btnTeamB20.Click += new System.EventHandler(this.btnTeamB_Click);
-            // 
-            // btnTeamB0
-            // 
-            this.btnTeamB0.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamB0.Location = new System.Drawing.Point(3, 129);
-            this.btnTeamB0.Name = "btnTeamB0";
-            this.btnTeamB0.Size = new System.Drawing.Size(245, 38);
-            this.btnTeamB0.TabIndex = 23;
-            this.btnTeamB0.Tag = "0";
-            this.btnTeamB0.Text = "0";
-            this.btnTeamB0.UseVisualStyleBackColor = true;
-            this.btnTeamB0.Click += new System.EventHandler(this.btnTeamB_Click);
-            // 
-            // btnTeamB10
-            // 
-            this.btnTeamB10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnTeamB10.Location = new System.Drawing.Point(3, 87);
-            this.btnTeamB10.Name = "btnTeamB10";
-            this.btnTeamB10.Size = new System.Drawing.Size(245, 36);
-            this.btnTeamB10.TabIndex = 20;
-            this.btnTeamB10.Tag = "10";
-            this.btnTeamB10.Text = "10";
-            this.btnTeamB10.UseVisualStyleBackColor = true;
-            this.btnTeamB10.Click += new System.EventHandler(this.btnTeamB_Click);
+            this.btnTeamBFout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTeamBFout.Location = new System.Drawing.Point(3, 88);
+            this.btnTeamBFout.Name = "btnTeamBFout";
+            this.btnTeamBFout.Size = new System.Drawing.Size(245, 79);
+            this.btnTeamBFout.TabIndex = 17;
+            this.btnTeamBFout.Tag = "B";
+            this.btnTeamBFout.Text = "Fout";
+            this.btnTeamBFout.UseVisualStyleBackColor = true;
+            this.btnTeamBFout.Click += new System.EventHandler(this.btnTeamAFout_Click);
             // 
             // frmRonde2
             // 
@@ -416,18 +332,12 @@
         private System.Windows.Forms.NumericUpDown nudTeamA;
         private System.Windows.Forms.Label lblTeamA;
         private System.Windows.Forms.Button btnReset;
-        private System.Windows.Forms.Button btnTeamC0;
-        private System.Windows.Forms.Button btnTeamB0;
-        private System.Windows.Forms.Button btnTeamA0;
-        private System.Windows.Forms.Button btnTeamC10;
-        private System.Windows.Forms.Button btnTeamB10;
-        private System.Windows.Forms.Button btnTeamA10;
-        private System.Windows.Forms.Button btnTeamC20;
-        private System.Windows.Forms.Button btnTeamB20;
-        private System.Windows.Forms.Button btnTeamA20;
-        private System.Windows.Forms.Button btnTeamC30;
-        private System.Windows.Forms.Button btnTeamB30;
-        private System.Windows.Forms.Button btnTeamA30;
+        private System.Windows.Forms.Button btnTeamCFout;
+        private System.Windows.Forms.Button btnTeamBFout;
+        private System.Windows.Forms.Button btnTeamAFout;
+        private System.Windows.Forms.Button btnTeamCGoed;
+        private System.Windows.Forms.Button btnTeamBGoed;
+        private System.Windows.Forms.Button btnTeamAGoed;
         private System.Windows.Forms.TableLayoutPanel tlpButtonsTeamA;
         private System.Windows.Forms.TableLayoutPanel tlpButtonsTeamC;
         private System.Windows.Forms.TableLayoutPanel tlpButtonsTeamB;
