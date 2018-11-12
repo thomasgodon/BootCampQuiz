@@ -153,6 +153,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Quiz\Consumer.cs" />
     <Compile Include="Quiz\GameController.cs" />
     <Compile Include="Quiz\IQuizForm.cs" />
     <Compile Include="Program.cs" />
