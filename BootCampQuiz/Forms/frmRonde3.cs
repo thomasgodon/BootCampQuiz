@@ -303,7 +303,7 @@ namespace BootCampQuiz.Forms
             if (rcTeamC.IsRunning) return;
 
             this.Control.Reset();
-            this.Control.TeamB.Punten += 30;
+            this.Control.TeamC.Punten += 30;
         }
 
         private void nudTeam_ValueChanged(object sender, EventArgs e)
