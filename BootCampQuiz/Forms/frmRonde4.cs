@@ -144,13 +144,6 @@ namespace BootCampQuiz.Forms
             catch { }         
         }
 
-        private void btnUpdateScore_Click(object sender, EventArgs e)
-        {
-            this.Control.TeamA.Punten += (int)nudSecondenA.Value;
-            this.Control.TeamB.Punten += (int)nudSecondenB.Value;
-            this.Control.TeamC.Punten += (int)nudSecondenC.Value;
-        }
-
         private void btnTeamAStart_Click(object sender, EventArgs e)
         {
 
@@ -167,6 +160,21 @@ namespace BootCampQuiz.Forms
         {
 
             nudSecondenC.Value = 30;
+        }
+   
+        private void btnUpdateScoreA_Click(object sender, EventArgs e)
+        {
+            this.Control.TeamA.Punten += (int)nudSecondenA.Value;
+        }
+
+        private void btnUpdateScoreB_Click(object sender, EventArgs e)
+        {
+            this.Control.TeamB.Punten += (int)nudSecondenB.Value;
+        }
+
+        private void btnUpdateScoreC_Click(object sender, EventArgs e)
+        {
+            this.Control.TeamC.Punten += (int)nudSecondenC.Value;
         }
     }
 }

@@ -141,26 +141,26 @@ namespace BootCampQuiz.Forms
             // tel 20 seconden af bij het andere team
             if (this.rbTeamA.Checked)
             {
-                // check of we 20 punten kunnen aftrekken
-                if ((this.nudTimeTeamB.Value - 20) < 0)
+                // check of we 10 punten kunnen aftrekken
+                if ((this.nudTimeTeamB.Value - 10) < 0)
                 {
                     this.nudTimeTeamB.Value = 0;
                 }
                 else
                 {
-                    this.nudTimeTeamB.Value -= 20;
+                    this.nudTimeTeamB.Value -= 10;
                 }
             }
             else
             {
-                // check of we 20 punten kunnen aftrekken
-                if ((this.nudTimeTeamA.Value - 20) < 0)
+                // check of we 10 punten kunnen aftrekken
+                if ((this.nudTimeTeamA.Value - 10) < 0)
                 {
                     this.nudTimeTeamA.Value = 0;
                 }
                 else
                 {
-                    this.nudTimeTeamA.Value -= 20;
+                    this.nudTimeTeamA.Value -= 10;
                 }
             }
 

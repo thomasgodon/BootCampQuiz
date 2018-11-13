@@ -149,6 +149,7 @@ namespace BootCampQuiz
             {
                 CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
                 _dataCollection.SetData("score1", _control.TeamA.Punten.ToString());
+                _caspar.Channels[(int)Consumer.A].CG.Update(10, _dataCollection);
                 _caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
             }
         }
@@ -159,6 +160,7 @@ namespace BootCampQuiz
             {
                 CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
                 _dataCollection.SetData("score2", _control.TeamB.Punten.ToString());
+                _caspar.Channels[(int)Consumer.A].CG.Update(10, _dataCollection);
                 _caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
             }
         }
@@ -169,6 +171,7 @@ namespace BootCampQuiz
             {
                 CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
                 _dataCollection.SetData("score3", _control.TeamC.Punten.ToString());
+                _caspar.Channels[(int)Consumer.A].CG.Update(10, _dataCollection);
                 _caspar.Channels[(int)Consumer.B].CG.Update(10, _dataCollection);
             }
         }

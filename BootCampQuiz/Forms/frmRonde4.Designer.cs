@@ -37,7 +37,7 @@
             this.lblTeamB = new System.Windows.Forms.Label();
             this.nudTeamA = new System.Windows.Forms.NumericUpDown();
             this.lblTeamA = new System.Windows.Forms.Label();
-            this.btnUpdateScore = new System.Windows.Forms.Button();
+            this.btnUpdateScoreC = new System.Windows.Forms.Button();
             this.tlpControlB = new System.Windows.Forms.TableLayoutPanel();
             this.btnTeamBGelachen = new System.Windows.Forms.Button();
             this.btnTeamBStart = new System.Windows.Forms.Button();
@@ -48,6 +48,8 @@
             this.btnTeamCStart = new System.Windows.Forms.Button();
             this.btnTeamCGelachen = new System.Windows.Forms.Button();
             this.nudSecondenA = new System.Windows.Forms.NumericUpDown();
+            this.btnUpdateScoreA = new System.Windows.Forms.Button();
+            this.btnUpdateScoreB = new System.Windows.Forms.Button();
             this.tlpRonde1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSecondenC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSecondenB)).BeginInit();
@@ -66,6 +68,8 @@
             this.tlpRonde1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33332F));
             this.tlpRonde1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
             this.tlpRonde1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33334F));
+            this.tlpRonde1.Controls.Add(this.btnUpdateScoreB, 0, 4);
+            this.tlpRonde1.Controls.Add(this.btnUpdateScoreA, 0, 4);
             this.tlpRonde1.Controls.Add(this.nudSecondenC, 2, 2);
             this.tlpRonde1.Controls.Add(this.nudSecondenB, 1, 2);
             this.tlpRonde1.Controls.Add(this.nudTeamC, 2, 1);
@@ -74,7 +78,7 @@
             this.tlpRonde1.Controls.Add(this.lblTeamB, 1, 0);
             this.tlpRonde1.Controls.Add(this.nudTeamA, 0, 1);
             this.tlpRonde1.Controls.Add(this.lblTeamA, 0, 0);
-            this.tlpRonde1.Controls.Add(this.btnUpdateScore, 1, 4);
+            this.tlpRonde1.Controls.Add(this.btnUpdateScoreC, 1, 4);
             this.tlpRonde1.Controls.Add(this.tlpControlB, 1, 3);
             this.tlpRonde1.Controls.Add(this.tlpControlA, 0, 3);
             this.tlpRonde1.Controls.Add(this.tlpControlC, 2, 3);
@@ -212,16 +216,16 @@
             this.lblTeamA.Text = "TEAM A";
             this.lblTeamA.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnUpdateScore
+            // btnUpdateScoreC
             // 
-            this.btnUpdateScore.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnUpdateScore.Location = new System.Drawing.Point(262, 377);
-            this.btnUpdateScore.Name = "btnUpdateScore";
-            this.btnUpdateScore.Size = new System.Drawing.Size(254, 50);
-            this.btnUpdateScore.TabIndex = 12;
-            this.btnUpdateScore.Text = "UPDATE SCORE";
-            this.btnUpdateScore.UseVisualStyleBackColor = true;
-            this.btnUpdateScore.Click += new System.EventHandler(this.btnUpdateScore_Click);
+            this.btnUpdateScoreC.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUpdateScoreC.Location = new System.Drawing.Point(522, 377);
+            this.btnUpdateScoreC.Name = "btnUpdateScoreC";
+            this.btnUpdateScoreC.Size = new System.Drawing.Size(255, 50);
+            this.btnUpdateScoreC.TabIndex = 12;
+            this.btnUpdateScoreC.Text = "UPDATE SCORE";
+            this.btnUpdateScoreC.UseVisualStyleBackColor = true;
+            this.btnUpdateScoreC.Click += new System.EventHandler(this.btnUpdateScoreC_Click);
             // 
             // tlpControlB
             // 
@@ -355,6 +359,28 @@
             this.nudSecondenA.TabIndex = 16;
             this.nudSecondenA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // btnUpdateScoreA
+            // 
+            this.btnUpdateScoreA.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUpdateScoreA.Location = new System.Drawing.Point(3, 377);
+            this.btnUpdateScoreA.Name = "btnUpdateScoreA";
+            this.btnUpdateScoreA.Size = new System.Drawing.Size(253, 50);
+            this.btnUpdateScoreA.TabIndex = 19;
+            this.btnUpdateScoreA.Text = "UPDATE SCORE";
+            this.btnUpdateScoreA.UseVisualStyleBackColor = true;
+            this.btnUpdateScoreA.Click += new System.EventHandler(this.btnUpdateScoreA_Click);
+            // 
+            // btnUpdateScoreB
+            // 
+            this.btnUpdateScoreB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUpdateScoreB.Location = new System.Drawing.Point(262, 377);
+            this.btnUpdateScoreB.Name = "btnUpdateScoreB";
+            this.btnUpdateScoreB.Size = new System.Drawing.Size(254, 50);
+            this.btnUpdateScoreB.TabIndex = 20;
+            this.btnUpdateScoreB.Text = "UPDATE SCORE";
+            this.btnUpdateScoreB.UseVisualStyleBackColor = true;
+            this.btnUpdateScoreB.Click += new System.EventHandler(this.btnUpdateScoreB_Click);
+            // 
             // frmRonde4
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -392,7 +418,7 @@
         private System.Windows.Forms.Label lblTeamB;
         private System.Windows.Forms.NumericUpDown nudTeamA;
         private System.Windows.Forms.Label lblTeamA;
-        private System.Windows.Forms.Button btnUpdateScore;
+        private System.Windows.Forms.Button btnUpdateScoreC;
         private System.Windows.Forms.TableLayoutPanel tlpControlB;
         private System.Windows.Forms.TableLayoutPanel tlpControlA;
         private System.Windows.Forms.TableLayoutPanel tlpControlC;
@@ -405,5 +431,7 @@
         private System.Windows.Forms.Button btnTeamCStart;
         private System.Windows.Forms.Button btnTeamCGelachen;
         private System.Windows.Forms.NumericUpDown nudSecondenA;
+        private System.Windows.Forms.Button btnUpdateScoreB;
+        private System.Windows.Forms.Button btnUpdateScoreA;
     }
 }

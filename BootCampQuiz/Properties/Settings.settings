@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="CasparCG_Host" Type="System.String" Scope="User">
-      <Value Profile="(Default)">192.168.10.51</Value>
+      <Value Profile="(Default)">192.168.0.11</Value>
     </Setting>
     <Setting Name="CasparCG_Port" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">5250</Value>

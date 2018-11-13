@@ -162,17 +162,17 @@ namespace BootCampQuiz.Forms
             switch (_sender.Tag as string)
             {
                 case "A":
-                    this.Control.TeamA.Punten += 10;
+                    this.Control.TeamA.Punten += 15;
                     this.Caspar.Channels[(int)Consumer.A].Load("Goed_A", false);
                     break;
 
                 case "B":
-                    this.Control.TeamB.Punten += 10;
+                    this.Control.TeamB.Punten += 15;
                     this.Caspar.Channels[(int)Consumer.A].Load("Goed_B", false);
                     break;
 
                 case "C":
-                    this.Control.TeamC.Punten += 10;
+                    this.Control.TeamC.Punten += 15;
                     this.Caspar.Channels[(int)Consumer.A].Load("Goed_C", false);
                     break;
             }
@@ -197,14 +197,17 @@ namespace BootCampQuiz.Forms
             switch (_sender.Tag as string)
             {
                 case "A":
+                    this.Control.TeamA.Punten -= 5;
                     this.Caspar.Channels[(int)Consumer.A].Load("Fout_A", false);
                     break;
 
                 case "B":
+                    this.Control.TeamB.Punten -= 5;
                     this.Caspar.Channels[(int)Consumer.A].Load("Fout_B", false);
                     break;
 
                 case "C":
+                    this.Control.TeamC.Punten -= 5;
                     this.Caspar.Channels[(int)Consumer.A].Load("Fout_C", false);
                     break;
             }

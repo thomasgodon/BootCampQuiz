@@ -25,26 +25,26 @@ namespace BootCampQuiz.Forms
 
         private void btnBackground1_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.C].Load("BKGD_1", true);
-            this.Caspar.Channels[(int)Consumer.C].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_1", true);
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
 
         private void btnBackground2_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.C].Load("BKGD_2", true);
-            this.Caspar.Channels[(int)Consumer.C].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_2", true);
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
 
         private void btnBackground3_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.C].Load("BKGD_3", true);
-            this.Caspar.Channels[(int)Consumer.C].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_3", true);
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
 
         private void btnFinale_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.C].Load("BKGD_4", true);
-            this.Caspar.Channels[(int)Consumer.C].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_4", true);
+            this.Caspar.Channels[(int)Consumer.A].Play();
         }
     }
 }

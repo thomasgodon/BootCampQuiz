@@ -9,18 +9,13 @@ namespace BootCampQuiz.Quiz
     enum Consumer
     {
         /// <summary>
-        /// GFX // Bluefish Card
+        /// GFX // Bluefish Card // LED Wall
         /// </summary>
         A = 0,
 
         /// <summary>
-        /// Score // BM Card
+        /// Afkijk // BM Card // Plasma
         /// </summary>
-        B = 1,
-
-        /// <summary>
-        /// Background // HDMI
-        /// </summary>
-        C = 2
+        B = 0,
     }
 }
