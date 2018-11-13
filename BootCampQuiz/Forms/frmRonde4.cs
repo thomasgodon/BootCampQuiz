@@ -175,5 +175,10 @@ namespace BootCampQuiz.Forms
         {
             this.Control.TeamC.Punten += (int)nudSecondenC.Value;
         }
+
+        private void frmRonde4_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _control.TeamPushed -= Control_TeamPushed;
+        }
     }
 }

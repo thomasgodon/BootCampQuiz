@@ -222,5 +222,10 @@ namespace BootCampQuiz.Forms
             // caspar cg template laden
             this.Caspar.Channels[(int)Consumer.A].Clear(10);
         }
+
+        private void frmRonde1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _control.TeamPushed -= Control_TeamPushed;
+        }
     }
 }

@@ -220,5 +220,10 @@ namespace BootCampQuiz.Forms
             // reset knoppen
             this.Control.Reset();
         }
+
+        private void frmRonde2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _control.TeamPushed -= Control_TeamPushed;
+        }
     }
 }

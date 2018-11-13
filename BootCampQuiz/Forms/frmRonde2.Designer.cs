@@ -309,6 +309,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ronde 2";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRonde2_FormClosing);
             this.Load += new System.EventHandler(this.frmRonde2_Load);
             this.tlpRonde1.ResumeLayout(false);
             this.tlpRonde1.PerformLayout();

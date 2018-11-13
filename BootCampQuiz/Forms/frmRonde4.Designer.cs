@@ -393,6 +393,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ronde 4";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmRonde4_FormClosing);
             this.Load += new System.EventHandler(this.frmRonde4_Load);
             this.tlpRonde1.ResumeLayout(false);
             this.tlpRonde1.PerformLayout();

@@ -308,6 +308,10 @@ namespace BootCampQuiz.Forms
 
         private void nudTeam_ValueChanged(object sender, EventArgs e)
         {
+            if (sender == nudTeamA) this.Control.TeamA.Punten = (int)nudTeamA.Value;
+            if (sender == nudTeamB) this.Control.TeamB.Punten = (int)nudTeamB.Value;
+            if (sender == nudTeamC) this.Control.TeamC.Punten = (int)nudTeamC.Value;
+
             this.SetReferenceClocks();
         }
 
@@ -320,6 +324,8 @@ namespace BootCampQuiz.Forms
 
             // remove genres
             this.Caspar.Channels[(int)Consumer.B].Clear();
+
+            _control.TeamPushed -= Control_TeamPushed;
         }
 
         private void rcTeamA_StartedStopped(object sender, EventArgs e)
