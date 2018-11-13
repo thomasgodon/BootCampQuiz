@@ -19,6 +19,7 @@ namespace BootCampQuiz.Forms
         private QuizControl _control;
         private CasparCGDataCollection _dataCollection = new CasparCGDataCollection();
         private string[] _genres; // lijst met genres
+        private int _genre = 0;
 
         // _________________________________ CLASS PROPERTIES _________________________________
 
@@ -88,14 +89,15 @@ namespace BootCampQuiz.Forms
 
         private void LoadScores()
         {
-            _dataCollection.Clear();
-
             _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
             _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
             _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
 
-            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
-            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
+            this.Caspar.Channels[(int)Consumer.A].CG.Add(11, "score", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.A].CG.Play(11);
+
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(11, "score_afkijk", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(11);
         }
 
         private void LoadGenres()
@@ -105,12 +107,12 @@ namespace BootCampQuiz.Forms
             _dataCollection.SetData("genre1", btnGenre1.Text);
             _dataCollection.SetData("genre2", btnGenre2.Text);
             _dataCollection.SetData("genre3", btnGenre3.Text);
-            _dataCollection.SetData("gekozen1", Convert.ToInt32(btnGenre1.Checked).ToString());
-            _dataCollection.SetData("gekozen2", Convert.ToInt32(btnGenre2.Checked).ToString());
-            _dataCollection.SetData("gekozen3", Convert.ToInt32(btnGenre3.Checked).ToString());
+            _dataCollection.SetData("gekozen1", Convert.ToInt32(!btnGenre1.Checked).ToString());
+            _dataCollection.SetData("gekozen2", Convert.ToInt32(!btnGenre2.Checked).ToString());
+            _dataCollection.SetData("gekozen3", Convert.ToInt32(!btnGenre3.Checked).ToString());
 
-            this.Caspar.Channels[(int)Consumer.B].CG.Add(11, "R3", _dataCollection);
-            this.Caspar.Channels[(int)Consumer.B].CG.Play(11);
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(12, "R3", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(12);
         }
 
         // _________________________________ EVENT HANDLERS _________________________________
@@ -124,22 +126,17 @@ namespace BootCampQuiz.Forms
                 switch (this.Control.AfgedruktTeam.Id)
                 {
                     case 1:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_A", false);
                         rcTeamA.Stop();
                         break;
 
                     case 2:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_B", false);
                         rcTeamB.Stop();
                         break;
 
                     case 3:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_C", false);
                         rcTeamC.Stop();
                         break;
                 }
-
-                this.Caspar.Channels[(int)Consumer.A].Play();
             }
         }
 
@@ -171,11 +168,25 @@ namespace BootCampQuiz.Forms
             if (_genres.Count() > 0) btnGenre1.Text = _genres[0];
             if (_genres.Count() > 1) btnGenre2.Text = _genres[1];
             if (_genres.Count() > 2) btnGenre3.Text = _genres[2];
+
+            // selecteer eerste liedjes
+            cmbMusicA.SelectedIndex = 0;
+            cmbMusicB.SelectedIndex = 0;
+            cmbMusicC.SelectedIndex = 0;
+
+            // clear layer 10 (lampen)
+            this.Caspar.Channels[(int)Consumer.A].Clear(10);
+
         }
 
         private void btnGenre_CheckedChanged(object sender, EventArgs e)
         {
             this.LoadGenres();
+
+            // cast sender
+            CheckBox button = sender as CheckBox;
+
+            if (button.Checked) _genre = Convert.ToInt32(button.Tag);
         }
 
         private void rcTeamA_Elapsed(object sender, elapsedEventArgs e)
@@ -307,12 +318,8 @@ namespace BootCampQuiz.Forms
             rcTeamB.Stop();
             rcTeamC.Stop();
 
-            // verwijder scores
-            try
-            {
-                this.Caspar.Channels[(int)Consumer.B].CG.Clear(11);
-            }
-            catch { }
+            // remove genres
+            this.Caspar.Channels[(int)Consumer.B].Clear();
         }
 
         private void rcTeamA_StartedStopped(object sender, EventArgs e)
@@ -322,10 +329,18 @@ namespace BootCampQuiz.Forms
                 if (rcTeamA.IsRunning)
                 {
                     btnTeamAStart.Text = "Stop";
+
+                    // speel muziek
+                    this.Caspar.Channels[(int)Consumer.A].LoadBG(12, $"R3/Ronde3_Thema{_genre.ToString()}_Lied{(cmbMusicA.SelectedIndex + 1).ToString()}", false);
+                    System.Threading.Thread.Sleep(100);
+                    this.Caspar.Channels[(int)Consumer.A].Play(12);
                 }
                 else
                 {
                     btnTeamAStart.Text = "Start";
+
+                    // stop muziek
+                    this.Caspar.Channels[(int)Consumer.A].Stop(12);
                 }
             });            
         }
@@ -337,10 +352,18 @@ namespace BootCampQuiz.Forms
                 if (rcTeamB.IsRunning)
                 {
                     btnTeamBStart.Text = "Stop";
+
+                    // speel muziek
+                    this.Caspar.Channels[(int)Consumer.A].LoadBG(12, $"R3/Ronde3_Thema{_genre.ToString()}_Lied{(cmbMusicB.SelectedIndex + 1).ToString()}", false);
+                    System.Threading.Thread.Sleep(100);
+                    this.Caspar.Channels[(int)Consumer.A].Play(12);
                 }
                 else
                 {
                     btnTeamBStart.Text = "Start";
+
+                    // stop muziek
+                    this.Caspar.Channels[(int)Consumer.A].Stop(12);
                 }
             });
         }
@@ -352,10 +375,18 @@ namespace BootCampQuiz.Forms
                 if (rcTeamC.IsRunning)
                 {
                     btnTeamCStart.Text = "Stop";
+
+                    // speel muziek
+                    this.Caspar.Channels[(int)Consumer.A].LoadBG(12, $"R3/Ronde3_Thema{_genre.ToString()}_Lied{(cmbMusicC.SelectedIndex + 1).ToString()}", false);
+                    System.Threading.Thread.Sleep(100);
+                    this.Caspar.Channels[(int)Consumer.A].Play(12);
                 }
                 else
                 {
                     btnTeamCStart.Text = "Start";
+
+                    // stop muziek
+                    this.Caspar.Channels[(int)Consumer.A].Stop(12);
                 }
             });
         }

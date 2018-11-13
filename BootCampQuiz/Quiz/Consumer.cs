@@ -16,6 +16,6 @@ namespace BootCampQuiz.Quiz
         /// <summary>
         /// Afkijk // BM Card // Plasma
         /// </summary>
-        B = 0,
+        B = 1,
     }
 }

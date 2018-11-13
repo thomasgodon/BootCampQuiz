@@ -91,8 +91,11 @@ namespace BootCampQuiz.Forms
             _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
             _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
 
-            this.Caspar.Channels[(int)Consumer.B].CG.Add(10, "SCORE", _dataCollection);
-            this.Caspar.Channels[(int)Consumer.B].CG.Play(10);
+            this.Caspar.Channels[(int)Consumer.A].CG.Add(11, "score", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.A].CG.Play(11);
+
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(11, "score_afkijk", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(11);
         }
 
         // _________________________________ EVENT HANDLERS _________________________________
@@ -106,19 +109,19 @@ namespace BootCampQuiz.Forms
                 switch (this.Control.AfgedruktTeam.Id)
                 {
                     case 1:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_A", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load(10, "Actief_A", false);
                         break;
 
                     case 2:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_B", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load(10, "Actief_B", false);
                         break;
 
                     case 3:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_C", false);
+                        this.Caspar.Channels[(int)Consumer.A].Load(10, "Actief_C", false);
                         break;
                 }
 
-                this.Caspar.Channels[(int)Consumer.A].Play();
+                this.Caspar.Channels[(int)Consumer.A].Play(10);
             }
         }
 
@@ -146,7 +149,7 @@ namespace BootCampQuiz.Forms
             this.Control.Reset();
 
             // caspar cg template laden
-            this.Caspar.Channels[(int)Consumer.A].Clear();
+            this.Caspar.Channels[(int)Consumer.A].Clear(10);
         }
 
         private void btnTeamAGoed_Click(object sender, EventArgs e)
@@ -163,22 +166,22 @@ namespace BootCampQuiz.Forms
             {
                 case "A":
                     this.Control.TeamA.Punten += 15;
-                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_A", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load(10, "Goed_A", false);
                     break;
 
                 case "B":
                     this.Control.TeamB.Punten += 15;
-                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_B", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load(10, "Goed_B", false);
                     break;
 
                 case "C":
                     this.Control.TeamC.Punten += 15;
-                    this.Caspar.Channels[(int)Consumer.A].Load("Goed_C", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load(10, "Goed_C", false);
                     break;
             }
 
             // play gfx
-            this.Caspar.Channels[(int)Consumer.A].Play();
+            this.Caspar.Channels[(int)Consumer.A].Play(10);
 
             // reset knoppen
             this.Control.Reset();
@@ -198,21 +201,21 @@ namespace BootCampQuiz.Forms
             {
                 case "A":
                     this.Control.TeamA.Punten -= 5;
-                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_A", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load(10, "Fout_A", false);
                     break;
 
                 case "B":
                     this.Control.TeamB.Punten -= 5;
-                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_B", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load(10, "Fout_B", false);
                     break;
 
                 case "C":
                     this.Control.TeamC.Punten -= 5;
-                    this.Caspar.Channels[(int)Consumer.A].Load("Fout_C", false);
+                    this.Caspar.Channels[(int)Consumer.A].Load(10, "Fout_C", false);
                     break;
             }
 
-            this.Caspar.Channels[(int)Consumer.A].Play();
+            this.Caspar.Channels[(int)Consumer.A].Play(10);
 
             // reset knoppen
             this.Control.Reset();

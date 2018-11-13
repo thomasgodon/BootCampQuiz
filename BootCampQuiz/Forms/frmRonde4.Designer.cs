@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.tlpRonde1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnUpdateScoreB = new System.Windows.Forms.Button();
+            this.btnUpdateScoreA = new System.Windows.Forms.Button();
             this.nudSecondenC = new System.Windows.Forms.NumericUpDown();
             this.nudSecondenB = new System.Windows.Forms.NumericUpDown();
             this.nudTeamC = new System.Windows.Forms.NumericUpDown();
@@ -48,8 +50,6 @@
             this.btnTeamCStart = new System.Windows.Forms.Button();
             this.btnTeamCGelachen = new System.Windows.Forms.Button();
             this.nudSecondenA = new System.Windows.Forms.NumericUpDown();
-            this.btnUpdateScoreA = new System.Windows.Forms.Button();
-            this.btnUpdateScoreB = new System.Windows.Forms.Button();
             this.tlpRonde1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSecondenC)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSecondenB)).BeginInit();
@@ -94,6 +94,28 @@
             this.tlpRonde1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tlpRonde1.Size = new System.Drawing.Size(780, 430);
             this.tlpRonde1.TabIndex = 1;
+            // 
+            // btnUpdateScoreB
+            // 
+            this.btnUpdateScoreB.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUpdateScoreB.Location = new System.Drawing.Point(262, 377);
+            this.btnUpdateScoreB.Name = "btnUpdateScoreB";
+            this.btnUpdateScoreB.Size = new System.Drawing.Size(254, 50);
+            this.btnUpdateScoreB.TabIndex = 20;
+            this.btnUpdateScoreB.Text = "UPDATE SCORE";
+            this.btnUpdateScoreB.UseVisualStyleBackColor = true;
+            this.btnUpdateScoreB.Click += new System.EventHandler(this.btnUpdateScoreB_Click);
+            // 
+            // btnUpdateScoreA
+            // 
+            this.btnUpdateScoreA.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnUpdateScoreA.Location = new System.Drawing.Point(3, 377);
+            this.btnUpdateScoreA.Name = "btnUpdateScoreA";
+            this.btnUpdateScoreA.Size = new System.Drawing.Size(253, 50);
+            this.btnUpdateScoreA.TabIndex = 19;
+            this.btnUpdateScoreA.Text = "UPDATE SCORE";
+            this.btnUpdateScoreA.UseVisualStyleBackColor = true;
+            this.btnUpdateScoreA.Click += new System.EventHandler(this.btnUpdateScoreA_Click);
             // 
             // nudSecondenC
             // 
@@ -358,28 +380,6 @@
             this.nudSecondenA.Size = new System.Drawing.Size(253, 20);
             this.nudSecondenA.TabIndex = 16;
             this.nudSecondenA.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnUpdateScoreA
-            // 
-            this.btnUpdateScoreA.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnUpdateScoreA.Location = new System.Drawing.Point(3, 377);
-            this.btnUpdateScoreA.Name = "btnUpdateScoreA";
-            this.btnUpdateScoreA.Size = new System.Drawing.Size(253, 50);
-            this.btnUpdateScoreA.TabIndex = 19;
-            this.btnUpdateScoreA.Text = "UPDATE SCORE";
-            this.btnUpdateScoreA.UseVisualStyleBackColor = true;
-            this.btnUpdateScoreA.Click += new System.EventHandler(this.btnUpdateScoreA_Click);
-            // 
-            // btnUpdateScoreB
-            // 
-            this.btnUpdateScoreB.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnUpdateScoreB.Location = new System.Drawing.Point(262, 377);
-            this.btnUpdateScoreB.Name = "btnUpdateScoreB";
-            this.btnUpdateScoreB.Size = new System.Drawing.Size(254, 50);
-            this.btnUpdateScoreB.TabIndex = 20;
-            this.btnUpdateScoreB.Text = "UPDATE SCORE";
-            this.btnUpdateScoreB.UseVisualStyleBackColor = true;
-            this.btnUpdateScoreB.Click += new System.EventHandler(this.btnUpdateScoreB_Click);
             // 
             // frmRonde4
             // 

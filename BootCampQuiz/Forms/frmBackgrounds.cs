@@ -14,7 +14,6 @@ namespace BootCampQuiz.Forms
 {
     public partial class frmBackgrounds : Form, IQuizForm
     {
-
         public CasparDevice Caspar { get; set; }
         public QuizControl Control { get; set; }
 
@@ -25,26 +24,26 @@ namespace BootCampQuiz.Forms
 
         private void btnBackground1_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_1", true);
-            this.Caspar.Channels[(int)Consumer.A].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load(9, "BKGD_1", true);
+            this.Caspar.Channels[(int)Consumer.A].Play(9);
         }
 
         private void btnBackground2_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_2", true);
-            this.Caspar.Channels[(int)Consumer.A].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load(9, "BKGD_2", true);
+            this.Caspar.Channels[(int)Consumer.A].Play(9);
         }
 
         private void btnBackground3_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_3", true);
-            this.Caspar.Channels[(int)Consumer.A].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load(9, "BKGD_3", true);
+            this.Caspar.Channels[(int)Consumer.A].Play(9);
         }
 
         private void btnFinale_Click(object sender, EventArgs e)
         {
-            this.Caspar.Channels[(int)Consumer.A].Load("BKGD_4", true);
-            this.Caspar.Channels[(int)Consumer.A].Play();
+            this.Caspar.Channels[(int)Consumer.A].Load(9, "BKGD_4", true);
+            this.Caspar.Channels[(int)Consumer.A].Play(9);
         }
     }
 }

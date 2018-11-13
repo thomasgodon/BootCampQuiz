@@ -77,31 +77,24 @@ namespace BootCampQuiz.Forms
             }
         }
 
+        private void LoadScore()
+        {
+            _dataCollection.SetData("score1", this.Control.TeamA.Punten.ToString());
+            _dataCollection.SetData("score2", this.Control.TeamB.Punten.ToString());
+            _dataCollection.SetData("score3", this.Control.TeamC.Punten.ToString());
+
+            this.Caspar.Channels[(int)Consumer.A].CG.Add(11, "score", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.A].CG.Play(11);
+
+            this.Caspar.Channels[(int)Consumer.B].CG.Add(11, "score_afkijk", _dataCollection);
+            this.Caspar.Channels[(int)Consumer.B].CG.Play(11);
+        }
+
         // _________________________________ EVENT HANDLERS _________________________________
 
         private void Control_TeamPushed(object sender, EventArgs e)
         {
-            this.SetGUI();
-
-            if (this.Control.Afgedrukt)
-            {
-                switch (this.Control.AfgedruktTeam.Id)
-                {
-                    case 1:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_A", false);
-                        break;
-
-                    case 2:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_B", false);
-                        break;
-
-                    case 3:
-                        this.Caspar.Channels[(int)Consumer.A].Load("Actief_C", false);
-                        break;
-                }
-
-                this.Caspar.Channels[(int)Consumer.A].Play();
-            }
+            this.SetGUI();            
         }
 
         private void frmRonde4_Load(object sender, EventArgs e)
@@ -115,6 +108,12 @@ namespace BootCampQuiz.Forms
             this.nudTeamA.DataBindings.Add("Text", this.Control.TeamA, "Punten");
             this.nudTeamB.DataBindings.Add("Text", this.Control.TeamB, "Punten");
             this.nudTeamC.DataBindings.Add("Text", this.Control.TeamC, "Punten");
+
+            // laad score
+            this.LoadScore();
+
+            // clear layer 10 (lampen)
+            this.Caspar.Channels[(int)Consumer.A].Clear(10);
         }
 
         private void btnTeamAGelachen_Click(object sender, EventArgs e)
